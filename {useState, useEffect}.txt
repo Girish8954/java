@@ -1,0 +1,24 @@
+import React, {useState, useEffect} from 'react';
+
+function ProfilePage() {
+  const [userName, setUserName] = useState('Sunny');
+
+  // This useEffect will run when userName changes
+  useEffect(() => {
+    document.title = `Welcome, ${userName}!`; //update the age title 
+    return() =>{
+      document.title = 'My website'; // Reset the title when the user leaves
+
+    };
+  }, [userName]);
+
+  return (
+    <div>
+      <h1>Welcome, {userName}!</h1>
+      <button onClick = {() => setUserName('Sheena')}>Change Name</button>
+
+      </div>
+  );
+  
+}
+export default ProfilePage;
