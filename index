@@ -1,0 +1,111 @@
+[12/11, 11:42 AM] amar gpt: <script>
+    const registrationData = new Map();
+    function submitForm() {
+   
+    const firstname = document.regform.firstname.value;
+    const middlename= document. regform.middlename.value;
+    const lastname = document.regform.lastname.value;
+    const registerno = document.regform.registernumber.value;
+    registrationData.set("firstname:",firstname);
+    registrationData.set("middlename:", middlename);
+    registrationData.set("lastname:", lastname);
+    registrationData.set("registerno:", registerno);
+    document.write("<table border=3px text-align=center>");
+
+        document.write("<tr>");
+        document.write("<th>First Name</th><th>Middle Name</th><th>Last  Name<th>Register No</th>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>"+registrationData.get("firstname:")+"</td>")
+        document.write("<td>"+registrationData.get("middlename:")+"</td>")
+        document.write("<td>"+registrationData.get("lastname:")+"</td>")
+        document.write("<td>"+registrationData.get("registerno:")+"</td>")
+        document.write("</tr>");
+        document.write("</table><br>")
+        document.write("Successfully Registered")
+
+        }
+
+    </script>
+    </head>
+    
+    <body>
+
+        <center>
+
+            <form id="registerform" name="regform">
+                <br><br>
+
+                <label for="First Name" >First Name:</label>
+                <input type="text" id="firstname" name="firstname" value=""><br><br>
+                <label for="Middle name" >Middle Name:</label> 
+                <input type="text" id="middlename" name="secondname" value=""><br><br>
+                <label for="Last Name" >Last Name:</label>
+                <input type="text" id="lastname" name="lastname" value=""><br><br>
+                <label for="Register No" >Register number:</label>
+                <input type="text" id="registernumber" name="registernumber"
+                value=""><br><br><br>
+                <input type="button" value="Submit" onclick="submitForm()"/>
+            </center>
+        </body>
+    </html>
+[12/11, 11:43 AM] amar gpt: import React from "react";
+import ChildB from "./ChildB";
+function ChildA(){
+    return(
+        <ChildB/>
+
+    )
+}
+export default ChildA;
+[12/11, 11:43 AM] amar gpt: import React from "react";
+import ChildC from "./ChildC";
+function ChildB(){
+    return(
+        <ChildC/>
+
+    )
+}
+export default ChildB;
+[12/11, 11:43 AM] amar gpt: import React,{useContext} from "react";
+import {data,data1}from './App'
+
+function ChildC(){
+    const firstname=useContext(data);
+    const gender=useContext(data1);
+    return (
+        <>
+        <h1>Hi my name is {firstname} and my gender is {gender}</h1>
+        </> 
+           )
+}
+export default ChildC;
+[12/11, 11:45 AM] amar gpt: import './App.css';
+import React,{createContext} from 'react';
+import ChildA from './ChildA';
+
+const data =createContext();
+const data1 =createContext();
+
+function App(){
+    const name ="Amar Thakur"
+    const gender ="male"
+    return(
+        <div>
+        <data.Provider value={name}>
+        <data1.Provider value={gender}>
+            <ChildA>
+
+            </ChildA>
+
+            </data1.Provider>
+            </data.Provider>
+
+            </div>
+        
+            
+        
+    );
+}
+export default App;
+export {data,data1}
